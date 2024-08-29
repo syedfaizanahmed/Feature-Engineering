@@ -1,0 +1,60 @@
+(CASE WHEN (IFNULL( numeric_feature_1 , 'NA') = 'NA') THEN 'NA'
+WHEN  numeric_feature_1  <=  15.0  THEN " <=  15.0 "
+WHEN  numeric_feature_1  BETWEEN  15.0  AND  53.0  THEN " 15.0 - 53.0 "
+WHEN  numeric_feature_1  BETWEEN  53.0  AND  90.0  THEN " 53.0 - 90.0 "
+WHEN  numeric_feature_1  >= 90.0  THEN " >=  90.0 "
+END) AS  leads_bin_numeric_feature_1 ,
+
+(CASE WHEN (IFNULL( numeric_feature_3 , 'NA') = 'NA') THEN 'NA'
+WHEN  numeric_feature_3  <=  2.0  THEN " <=  2.0 "
+WHEN  numeric_feature_3  BETWEEN  3.0  AND  18.0  THEN " 3.0 - 18.0 "
+WHEN  numeric_feature_3  BETWEEN  19.0  AND  35.0  THEN " 19.0 - 35.0 "
+WHEN  numeric_feature_3  >= 36.0  THEN " >=  36.0 "
+END) AS  leads_bin_numeric_feature_3 ,
+
+(CASE WHEN (IFNULL( numeric_feature_2 , 'NA') = 'NA') THEN 'NA'
+WHEN  numeric_feature_2  <=  40.0  THEN " <=  40.0 "
+WHEN  numeric_feature_2  BETWEEN  40.0  AND  52.0  THEN " 40.0 - 52.0 "
+WHEN  numeric_feature_2  BETWEEN  52.0  AND  67.0  THEN " 52.0 - 67.0 "
+WHEN  numeric_feature_2  BETWEEN  67.0  AND  90.0  THEN " 67.0 - 90.0 "
+WHEN  numeric_feature_2  BETWEEN  90.0  AND  175.0  THEN " 90.0 - 175.0 "
+WHEN  numeric_feature_2  >= 176.0  THEN " >=  176.0 "
+END) AS  leads_bin_numeric_feature_2 ,
+
+(CASE WHEN (IFNULL( categoric_feature_5 , 'NA') = 'NA') THEN 'NA'
+WHEN  categoric_feature_5  in ('PA_GPOP_11','Facturacion_OtrasGestiones','Internet_Conectividad_Menu','Prosegur_OtroMotivo','Contrasenias_Otros','Internet_Baja_NoCol_Movil','Reclamacion_Desambig','PUK','Reclamacion_Otros','R11OR','Configuracion_NoCol','SIM_CambioTarjeta','OtrasInformaciones','Internet_Baja','MovistarTV_Dispositivo_Contrasenias','Internet_Conectividad_AdminKO','Contestador_NoCol' ) THEN ' Bin_1 '
+WHEN  categoric_feature_5  in ( 'AUTO-224472_RetPortaRes','AT_MovistarTV','AT_NoCol_Movil','Agenda_Omnicanal','ACOCO','AT_Internet_Movil','AUTO-1002_TelcoReanudacion','Alta_Desambig','AUTO-1004_C2CCancelPortabMovil','AT_NoCol_Fijo','00000','AT_Fijo_Voz','AT_Internet' ) THEN ' Bin_2 '
+WHEN  categoric_feature_5  in ( 'TOL_Contrasenia','TR Espec. MPA ATENTO OFFSHORE COL','TRF_Discriminador','TOL_InformacionProductosServicios','Silencio','Servicio_Informacion_Telefonica','TRETP','TEMGP','TOL_NoCol','SeguroMovil','Solar360','TBTEU','TOL_Desambig','Seguro_Desambig_NoCol','TGPAT','TMAOC','TBATE','Tarifas','Saliente','SeguroHogar','TOL_NavegacionEfactura','Smart_Wifi','T04IN','TOL_Efactura','TMATI','Silencio_AdminKO','SeniorNM_Averia' ) THEN ' Bin_3 '
+WHEN  categoric_feature_5  in ( 'Tr Comerc Orig CAT','Tarifas_MiTarifa','Terminales_Averia','Tr Comerc Orig GAT','Tarifas_Internacionales','Terminales_Cambiar','Terminales_Avanzados_Tecnico','Tr a Retencion','Terminales_Otros_Tecnico_NoCol','Tarifas_Cambiar','Terminales_Otros_Tecnico','VRU Camel 699991004','Terminales_Otros_Tecnico_NoValidaNumero','TrasladoLinea','Terminales_Otros_Tecnico_AdminKO' ) THEN ' Bin_4 '
+WHEN  categoric_feature_5  in ( 'Alta_Linea_NMProfesional','Alta_Linea' ) THEN ' Bin_5 '
+else 'smalls' END) AS  leads_bin_categoric_feature_5 ,
+
+(CASE WHEN (IFNULL( categoric_feature_1 , 'NA') = 'NA') THEN 'NA'
+WHEN  categoric_feature_1  in ( 'BRAND - PRODUCT - ADSL(900)-CONECTA 600-SEM-GOOGLE-PC-MOVISTAR-900','BANNER HOME COMODIN-OTROS-DIRECTO-ORGANICO Y SEO-HOME-PC-MOVISTAR-900','900103980-FUSION_PLUS-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','Call Extension-FIBRA 1Gb-SEM-GOOGLE-PC/MOBILE-MOVISTAR-900','900104607-FUSION_PLUS-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','Banner-FUSION TOTAL PLUS-DIRECTO-ORGANICO Y SEO-HOME-PC/MOBILE-MOVISTAR-900','Brand_Product_Fusion-MIMOVISTAR MAX ESENCIAL FUTBOL-SEM-GOOGLE-PC-MOVISTAR OFERTON-900','BANNER HOME IV AUTONOMOS-TERMINALES-DIRECTO-ORGANICO Y SEO-HOME-PC-MOVISTAR-900','900104849-BAF-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','Campaña Trafico Web-MOVISTAR OTT-DIRECTO-ORGANICO Y SEO-WEB-PC/MOBILE-MOVISTAR-900','Campaña de tráfico-FUSION TOTA','BRAND - PRODUCT - ADSL-BAF-SEM-GOOGLE-MOBILE-MOVISTAR-900','900104752-MIMOVISTAR-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','DIRECTO APP-OTROS-DIRECTO-ORGA','Chat Fin de Compra-OTROS-DIREC','Brand_Product_Tarifas-CONTRATO ILIMITADO 8GB-SEM-GOOGLE-PC-MOVISTAR OFERTON-C2C','Campaña de tráfico-MAX-DISPLAY Y RMK-DISPLAY MEDIOS-PC/MOBILE-MOVISTAR PUBLICIDAD-900','900104601-FUSION BASE-DIRECTO-','900200627-PORTADA-VERTV-FUSION BASE-DIRECTO-ORGANICO Y SEO-HOME-PC/MOBILE-MOVISTAR-900','BAF Movon Core-BAF-SEM-GOOGLE-','900103643-FUSION SELECCION-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','Directo - Perso-FUSION SELECCION-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','Directo - Perso-BAF-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900' ) THEN ' Bin_1 '
+WHEN  categoric_feature_1  in ( 'Ficha-LINEA INDIVIDUAL-DIRECTO-ORGANICO Y SEO-FICHA-PC/MOBILE-MOVISTAR-900','Directo - Perso-TARIFA MOVIL-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','Ficha-CONECTA-DIRECTO-ORGANICO Y SEO-FICHAS-PC/MOBILE-MOVISTAR-900' ) THEN ' Bin_2 '
+WHEN  categoric_feature_1  in ( 'NONBRAND - PRODUCT - ADSL-FUSI','MOVISTAR_ONLINE - Call Only TV - 900-FUSION_PLUS-SEM-GOOGLE-MOBILE-MOVISTAR MOVON-900','Publicidad TV-FUSION_PLUS-TV-TV-PC/MOBILE-MOVISTAR-900','Lead Ads-CONECTA 1GB-REDES SOCIALES-FACEBOOK_INSTAGRAM-PC/MOBILE-MOVISTAR PUBLICIDAD-C2C','Personalizacion-ATENCION-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','RRSS Internas-BAF-REDES SOCIAL','MOVISTARONLINE-OTROS-SEM-GOOGLE-PC/MOBILE-MOVISTAR MOVON-900','Movistar Exacta-FUSION SELECCION-SEM-GOOGLE-PC/MOBILE-MOVISTAR-C2C','GOOGLE PLUS-OTROS-REDES SOCIAL','Leads Ads-BAF-REDES SOCIALES-REDES SOCIALES-PC/MOBILE-MOVISTAR PUBLICIDAD-C2C' ) THEN ' Bin_3 '
+WHEN  categoric_feature_1  in ( 'GENERACION WEB-OTROS-DIRECTO-O','GENERACION WEB-OTROS-DIRECTO-ORGANICO Y SEO-FICHAS-PC/MOBILE-MOVISTAR-900','FusiÃ³n contigo FB ddibi-FUSION SELECCION FUTBOL-REDES SOCIALES-FACEBOOK_INSTAGRAM-PC/MOBILE-DDIBI-900','FusiÃ³n contigo FB ddibi-CONECTA-REDES SOCIALES-FACEBOOK_INSTAGRAM-PC/MOBILE-DDIBI-900','FusiÃ³n contigo FB ddibi-FUSION_PLUS-REDES SOCIALES-FACEBOOK_INSTAGRAM-PC/MOBILE-DDIBI-900' ) THEN ' Bin_4 '
+WHEN  categoric_feature_1  in ( 'Defecto sin C2C-BAF-REDES SOCIALES-FACEBOOK_INSTAGRAM-PC/MOBILE-DDIBI-C2C','DISTRIBUTIVA TV(900)-FUSION_PLUS-DIRECTO-ORGANICO Y SEO-DISTRIBUTIVA-PC-MOVISTAR-900','DIRECTO-Qustodio Premium-DIREC','Defecto sin C2C-BAF-REDES SOCIALES-FACEBOOK_INSTAGRAM-PC/MOBILE-DDIBI-900','DIRECTO-PERSO-TERMINALES-DIRECTO-ORGANICO Y SEO-PERSONALIZACION-PC/MOBILE-MOVISTAR-900','DIRECTO-CONFIGURADOR-DIRECTO-O','Desbordamiento Salud-MOVISTAR SALUD-900 PLATAFORMAS-CALL CENTER-PC/MOBILE-MOVISTAR SALUD-900','DISTRIBUTIVA ADSL(900)-BAF-DIRECTO-ORGANICO Y SEO-DISTRIBUTIVA-PC-MOVISTAR-900','DT CANARIAS POST-BAF-REDES SOC','DIRECTO-CONFIGURADOR-DIRECTO-ORGANICO Y SEO-WEB-PC/MOBILE-MOVISTAR-900','DIRECTO-CONFIGURADOR-DIRECTO-ORGANICO Y SEO-WEB-PC/MOBILE-MOVISTAR-C2C','Directo - Perso-ATENCION-DIREC' ) THEN ' Bin_5 '
+else 'smalls' END) AS  leads_bin_categoric_feature_1 ,
+
+(CASE WHEN (IFNULL( categoric_feature_4 , 'NA') = 'NA') THEN 'NA'
+WHEN  categoric_feature_4  in ( 'COMPARADORES','EMAIL MK','DISTRIBUTIVA','FACEBOOK_INSTAGRAM','EMAIL','CONFIGURADOR FUSION','FICHA','CODIFICADOR','AFILIACION','BING','COMMUNITY','A3MEDIA','CODIFICADOR TV','ATENCION','DESCOTV','DISCOVERY','ASISTENTE COMERCIAL','BLOGS','ASISTENTE','CALL CENTER','CANALPLUS','APP','DISPLAY MEDIOS' ) THEN ' Bin_0 '
+WHEN  categoric_feature_4  in ( 'PROCESOCOMPRA','TIKTOK','PERSONALIZACION','SMS','REDES SOCIALES','TRADE DESK','PROCESO COMPRA','PMAX','TV','PROCESO DE COMPRA','TWITTER','PINTEREST','TELCO','SPOTS TV','RADIO','NOVUM','TELECINCO' ) THEN ' Bin_1 '
+WHEN  categoric_feature_4  in ( 'MOVISTAR EXACTA','GENERICO','MARCA+GENERICO','GOOGLE','HOME','HOT LEADS','Google','FICHAS','MI MOVISTAR' ) THEN ' Bin_2 '
+else 'smalls' END) AS  leads_bin_categoric_feature_4 ,
+
+(CASE WHEN (IFNULL( categoric_feature_2 , 'NA') = 'NA') THEN 'NA'
+WHEN  categoric_feature_2  in ( 'AFILIACION','BTL','AFILICIACION','APPS','900 PLATAFORMAS','DISPLAY Y RMK','DIRECTO-ORGANICO Y S' ) THEN ' Bin_0 '
+WHEN  categoric_feature_2  in ( 'SEM' ) THEN ' Bin_1 '
+WHEN  categoric_feature_2  in ( 'RADIO-PRENSA-EXTERIO','REDES SOCIALES' ) THEN ' Bin_2 '
+else 'smalls' END) AS  leads_bin_categoric_feature_2 ,
+
+(CASE WHEN (IFNULL( categoric_feature_3 , 'NA') = 'NA') THEN 'NA'
+WHEN  categoric_feature_3  in ( 'R7' ) THEN ' Bin_0 '
+WHEN  categoric_feature_3  in ( 'B2','B6','B1','22','B5','11','03','B0','B7','33','B8','B4' ) THEN ' Bin_1 '
+WHEN  categoric_feature_3  in ( 'N1','E0','N9','N3','NZ','MA','CR','MI','N5','MT','BF','MF','N8','N2','N6','N7','N4' ) THEN ' Bin_2 '
+WHEN  categoric_feature_3  in ( 'OP','R1' ) THEN ' Bin_3 '
+WHEN  categoric_feature_3  in ( 'R6' ) THEN ' Bin_4 '
+WHEN  categoric_feature_3  in ( 'R4','R2','R3' ) THEN ' Bin_5 '
+WHEN  categoric_feature_3  in ( 'R5' ) THEN ' Bin_6 '
+else 'smalls' END) AS  leads_bin_categoric_feature_3 ,
